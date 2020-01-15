@@ -1,6 +1,7 @@
 {
   "name": "component-library",
   "version": "0.1.0",
+  "author": "Alejandro G. Carlstein Ramos Mejia",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
