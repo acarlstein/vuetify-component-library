@@ -15,15 +15,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .center-layout {
-    border: 1px solid red;
-    & > v-row {
-      border: 1px solid black;
-      min-height: cal(100 - 54px);
-    }
+.center-layout {
+  border: 1px solid red;
+  & > v-row {
+    border: 1px solid black;
+    min-height: cal(100 - 54px);
   }
+}
 
-  *, ::after, ::before {
-    box-sizing: border-box;
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }
 </style>

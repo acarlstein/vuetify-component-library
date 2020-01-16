@@ -1,0 +1,11 @@
+{
+    "singleQuote": true,
+    "semi": false,
+    "spaceBeforeFunctionParen": true,
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {
+            "singleQuote": true,
+            "spaceBeforeParen": true
+        }
+    }
+}
