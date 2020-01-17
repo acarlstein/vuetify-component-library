@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/Home.vue'
-import PaletteView from '../views/configuration/Palette.vue'
+import homeView from '../views/home.vue'
+import paletteView from '../views/configuration/palette.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: homeView
   },
   {
     path: '/about',
@@ -22,7 +22,7 @@ const routes = [
   {
     path: '/configuration/palette',
     name: 'configuration-palette',
-    component: PaletteView
+    component: paletteView
   }
 ]
 

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'App',
+  name: 'app',
   data: () => ({
     //
   })
@@ -16,5 +16,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './scss/App.scss'
+@import './scss/app.scss'
 </style>
