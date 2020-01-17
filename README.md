@@ -1,4 +1,5 @@
-# component-library
+# vuetify-component-library
+Copyright: Alejandro G. Carlstein Ramos Mejia
 
 ## Project setup
 ```
