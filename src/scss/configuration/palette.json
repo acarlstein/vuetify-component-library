@@ -1,0 +1,82 @@
+{
+  "palette": [
+    {
+      "name": "White",
+      "variableName": "$white",
+      "value": "#FFF !default",
+      "mockValue":  "#FFF"
+    },
+    {
+      "name": "Black",
+      "variableName": "$black",
+      "value": "#000 !default",
+      "mockValue":  "#000"
+    },
+    {
+      "name": "Gray Darker",
+      "variableName": "$gray-darker",
+      "value": "lighten($black, 13.6%) !default",
+      "mockValue": "#232323"
+    },
+    {
+      "name": "Gray Dark",
+      "variableName": "$gray",
+      "value": "lighten($black, 20.1%) !default",
+      "mockValue": "#333"
+    },
+    {
+      "name": "Gray",
+      "variableName": "$gray",
+      "value": "lighten($black, 33.6%) !default",
+      "mockValue": "#565656"
+    },
+    {
+      "name": "Gray Light",
+      "variableName": "$gray-light",
+      "value": "lighten($black, 46.8%) !default",
+      "mockValue": "#777"
+    },
+    {
+      "name": "Gray Lighter",
+      "variableName": "$gray-lighter",
+      "value": "lighten($black, 93.6%) !default",
+      "mockValue": "#efefef"
+    },
+    {
+      "name": "Success",
+      "variableName": "$success",
+      "value": "#4cb95d !default",
+      "mockValue": "#4cb95d"
+    },
+    {
+      "name": "Info",
+      "variableName": "$info",
+      "value": "#6bc1df !default",
+      "mockValue" : "#6bc1df"
+    },
+    {
+      "name": "Warning",
+      "variableName": "$warning",
+      "value": "#f09d4c !default",
+      "mockValue": "#f09d4c"
+    },
+    {
+      "name": "Danger",
+      "variableName": "$danger",
+      "value": "#c9434e !default",
+      "mockValue": "#c9434e"
+    },
+    {
+      "name": "Primary",
+      "variableName": "$primary",
+      "value": "darken(#539bcb, 6.5%) !default",
+      "mockValue": "#3b8cc2"
+    },
+    {
+      "name": "Muted",
+      "variableName": "$muted",
+      "value": "$gray-light !default",
+      "mockValue": "#777"
+    }
+  ]
+}
