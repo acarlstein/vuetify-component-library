@@ -12,7 +12,15 @@ let vuetify
 describe('palleteListComponent', () => {
   let wrapper
   let propsDataForTesting = {
-    title: "Some title"
+    title: "Some title",
+    palette: [
+      {
+        "name": "White",
+        "variableName": "$white",
+        "value": "#FFF !default",
+        "mockValue":  "#FFF"
+      }
+    ]
   }
 
   beforeEach(() => {
@@ -23,6 +31,7 @@ describe('palleteListComponent', () => {
 
   it('test props', () => {
     expect(wrapper.props().title).toBe(propsDataForTesting.title)
+    expect(wrapper.props().palette[0]).toBe(propsDataForTesting.palette[0])
   })
 
 })
