@@ -36,7 +36,7 @@
           <strong>Variable Value</strong>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-for="color in colors" :key="color.value">
+      <v-list-item v-for="color in paletteArray" :key="color.value">
         <v-list-item-content>
           <v-tooltip right>
             <template v-slot:activator="{ on }">
@@ -68,27 +68,28 @@
 </template>
 
 <script>
-import palette from '../scss/configuration/palette.json'
-let colors = palette.palette
-let defaultSearchOptions = colors
-  .map(color => color.name)
-  .concat(colors.map(color => color.value))
-  .concat(colors.map(color => color.variableName))
-  .concat(colors.map(color => color.mockValue))
+import paletteSource from '../scss/configuration/palette.json'
 export default {
   name: 'palette-list',
   props: {
     title: {
       type: String,
       default: ''
+    },
+    palette: {
+      type: Array,
+      default: function () {
+        return paletteSource.palette
+      }
     }
   },
-  data: () => {
+  data: function () {
     return {
-      colors: colors,
-      searchValue: null,
-      searchOptions: defaultSearchOptions,
-      search: null
+      colorArray: this.palette,
+      searchOptions: [],
+      paletteArray: [],
+      search: '',
+      searchValue: ''
     }
   },
   watch: {
@@ -98,15 +99,29 @@ export default {
   },
   methods: {
     querySearch (queryString) {
-      queryString = queryString.toLowerCase()
-      this.colors = colors.filter(
-        c =>
-          c.name.toLowerCase().includes(queryString) ||
-          c.variableName.toLowerCase().includes(queryString) ||
-          c.value.toLowerCase().includes(queryString) ||
-          c.mockValue.toLowerCase().includes(queryString)
-      )
+      if (queryString == null) {
+        this.paletteArray = this.$props.palette
+      } else {
+        queryString = queryString.toLowerCase()
+        this.paletteArray = this.$props.palette.filter(
+          c =>
+            c.name.toLowerCase().includes(queryString) ||
+            c.variableName.toLowerCase().includes(queryString) ||
+            c.value.toLowerCase().includes(queryString) ||
+            c.mockValue.toLowerCase().includes(queryString)
+        )
+      }
+    },
+    buildSearchOptions () {
+      return this.$props.palette
+        .map(color => color.name)
+        .concat(this.palette.map(color => color.value))
+        .concat(this.palette.map(color => color.variableName))
+        .concat(this.palette.map(color => color.mockValue))
     }
+  },
+  mounted () {
+    this.$data.searchOptions = this.buildSearchOptions()
   }
 }
 </script>
