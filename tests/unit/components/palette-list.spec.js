@@ -25,8 +25,6 @@ describe('palleteListComponent', () => {
     expect(wrapper.props().title).toBe(propsDataForTesting.title)
   })
 
-
-
 })
 
 function getWrapper(propsDataForTesting){
