@@ -5,7 +5,7 @@
 
       <v-toolbar-title v-if="title.length > 0">{{title}}</v-toolbar-title>
 
-      <v-icon class="mr-2">mdi-magnify</v-icon>
+      <v-icon class="ml-4 mr-2">mdi-magnify</v-icon>
 
       <v-autocomplete
         class="mt-6"
