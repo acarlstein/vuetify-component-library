@@ -10,21 +10,26 @@ const localVue = createLocalVue()
 
 describe('palleteListComponent', () => {
   let wrapper
+
+  let whiteColorProp = {
+    "name": "White",
+    "variableName": "$white",
+    "value": "#FFF !default",
+    "mockValue": "#FFF"
+  }
+
+  let blackColorProp = {
+    "name": "Black",
+    "variableName": "$black",
+    "value": "#000 !default",
+    "mockValue": "#000"
+  }
+
   let propsDataForTesting = {
     title: "Some title",
     palette: [
-      {
-        "name": "White",
-        "variableName": "$white",
-        "value": "#FFF !default",
-        "mockValue": "#FFF"
-      },
-      {
-        "name": "Black",
-        "variableName": "$black",
-        "value": "#000 !default",
-        "mockValue": "#000"
-      }
+      whiteColorProp,
+      blackColorProp
     ]
   }
 
@@ -48,7 +53,7 @@ describe('palleteListComponent', () => {
     expect(wrapper.text().indexOf(propsDataForTesting.title)).toBeGreaterThan(-1)
   })
 
-  it('test autocomplete items', () => {
+  it('test autocomplete searchOptions items', () => {
     expect(wrapper.findAll('v-autocomplete-stub').isVisible()).toBe(true)
     let items = propsDataForTesting.palette
       .map(color => color.name)
@@ -56,6 +61,18 @@ describe('palleteListComponent', () => {
       .concat(propsDataForTesting.palette.map(color => color.variableName))
       .concat(propsDataForTesting.palette.map(color => color.mockValue))
     expect(wrapper.find('v-autocomplete-stub').attributes().items).toBe(items.join(','))
+  })
+
+  it('test selectedColor event', async () => {
+    wrapper.vm.$emit('selectedColor', whiteColorProp)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().selectedColor[0][0]).toEqual(whiteColorProp)
+  })
+
+  it('test selectedColor method', async () => {
+    wrapper.vm.selectedColor(blackColorProp)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().selectedColor[0][0]).toEqual(blackColorProp)
   })
 
 })
