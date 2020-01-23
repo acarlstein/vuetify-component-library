@@ -1,18 +1,19 @@
-module: {
-    loaders: [
-      {
-        test: /\.vue$/,
-        loader: 'vue'
-      }, 
-      {
-          test: /\.s[a|c]ss$/,
-          loader: 'style!css!sass'
-      }
-    ]
-  },
-  vue: {
-    loaders: {
-      scss: 'style!css!sass'
+// webpack.config.js
+
+module.exports = {
+  rules: [
+    {
+      test: /\.sass$/,
+      use: [
+        'vue-style-loader',
+        'css-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            prependData: "@import '@/styles/app.scss'"
+          }
+        }
+      ]
     }
-  }
+  ]
 }

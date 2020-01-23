@@ -1,13 +1,20 @@
 <template>
-  <v-app id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <v-app>
+    <v-content>
+      <router-view />
+    </v-content>
   </v-app>
 </template>
 
+<script>
+export default {
+  name: 'app',
+  data: () => ({
+    //
+  })
+}
+</script>
+
 <style lang="scss">
-@import "./scss/App.scss";
+@import './scss/app.scss'
 </style>
