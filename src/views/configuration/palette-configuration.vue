@@ -6,10 +6,10 @@
 
 <script>
 import centerLayout from '../../layouts/center-layout.vue'
-import paletteList from '../../components/palette-list'
+import paletteList from '../../components/configuration/palette-list'
 
 export default {
-  name: 'palette-view',
+  name: 'palette-configuration-view',
   components: {
     centerLayout,
     paletteList
