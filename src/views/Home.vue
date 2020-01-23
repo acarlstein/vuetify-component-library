@@ -1,8 +1,7 @@
 <template>
   <v-container>
-      <h1> Home</h1>
-      <font-awesome-icon icon="coffee" />
-      <i class="fas fa-coffee"></i>
+      <h1>Vuetify Component Library</h1>
+      <h2>Coming soon...</h2>
   </v-container>
 </template>
 

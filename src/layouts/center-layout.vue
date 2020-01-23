@@ -16,16 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 .center-layout {
-  border: 1px solid red;
-  & > v-row {
-    border: 1px solid black;
-    min-height: cal(100 - 54px);
-  }
-}
-
-*,
-::after,
-::before {
-  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 </style>
