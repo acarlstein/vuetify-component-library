@@ -4,7 +4,7 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import { shallowMount, mount, createLocalVue } from "@vue/test-utils"
 
-import paletteListComponent from '../../../src/components/palette-list.vue'
+import paletteListComponent from '../../../src/components/configuration/palette-list.vue'
 
 const localVue = createLocalVue()
 
