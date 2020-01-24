@@ -29,7 +29,10 @@
 
         <v-divider></v-divider>
 
-        <v-list-item v-for="item in items" :key="item.title" @click.stop="action($event, item.click)" >
+        <v-list-item v-for="item in items"
+                    :key="item.title"
+                    @click.stop="action($event, item.click)"
+                    :to="item.to">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -106,9 +109,9 @@ function getDefaultData () {
   return {
     drawer: true,
     items: [
-      { title: 'Home', icon: 'mdi-home', click: '' },
-      { title: 'About', icon: 'mdi-help-box', click: '' },
-      { title: 'Configuration', icon: 'mdi-settings', click: '' },
+      { title: 'Home', icon: 'mdi-home', to: '/' },
+      { title: 'About', icon: 'mdi-help-box', to: '/about' },
+      { title: 'Configuration', icon: 'mdi-settings' },
       {
         title: 'Menu Configuration',
         icon: 'mdi-settings-transfer',
