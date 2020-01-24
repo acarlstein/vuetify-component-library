@@ -11,7 +11,7 @@
       dark
     >
       <v-list dense nav class="py-0">
-        <v-list-item two-line :class="miniVariant && 'px-0'">
+        <v-list-item two-line :class="miniVariant && 'px-0'" :to="userProfileTo">
           <v-list-item-avatar>
             <img src="images/my-avatar.jpg" />
           </v-list-item-avatar>
@@ -51,8 +51,8 @@
       <v-row>
           <v-col cols="11">
             <v-switch v-model="background" class="ma-2" label="Use Background Image"></v-switch>
-            <div>
-              <v-select v-if="!background" v-model="color" :items="colors" label="Background Color" class="ml-4 ma-2"></v-select>
+            <div v-if="!background" >
+              <v-select v-model="color" :items="colors" label="Background Color" class="ml-4 ma-2"></v-select>
             </div>
             <div>
               <v-select v-if="background" v-model="image" :items="images" label="Background Image" class="ml-4 ma-2"></v-select>
@@ -73,6 +73,7 @@ import paletteSource from '../../scss/components/configuration/palette.json'
 import dialogCmp from '../dialog-cmp.vue'
 const backgroundImages = require.context('../../../public/images/menu-backgrounds', true, /^.*\.(jpg|svg)$/).keys().map(s => s.slice(2))
 const backgroundColors = paletteSource.palette.map(color => color.variableName.slice(1))
+window.console.log(backgroundColors)
 export default {
   name: 'navigation-menu',
   components: {
@@ -111,14 +112,14 @@ function getDefaultData () {
     items: [
       { title: 'Home', icon: 'mdi-home', to: '/' },
       { title: 'About', icon: 'mdi-help-box', to: '/about' },
-      { title: 'Configuration', icon: 'mdi-settings' },
+      { title: 'Configuration', icon: 'mdi-settings', to: '/configuration' },
       {
         title: 'Menu Configuration',
         icon: 'mdi-settings-transfer',
         click: 'show(menuConfigurationDialog)'
       }
     ],
-    color: backgroundColors[11],
+    color: 'primary',
     colors: backgroundColors,
     image: backgroundImages[0],
     images: backgroundImages,
@@ -127,6 +128,7 @@ function getDefaultData () {
     expandOnHover: true,
     background: false,
     userName: 'Alejandro G. Carlstein Ramos Mejia',
+    userProfileTo: '/profile',
     menuConfigurationDialog: false
   }
 }
@@ -137,5 +139,11 @@ function getDefaultData () {
 .v-label{
   word-break: keep-all;
   white-space: nowrap
+}
+.color-box {
+  border: 2px solid black;
+  max-width: 16px;
+  width: 16px;
+  height: 16px;
 }
 </style>

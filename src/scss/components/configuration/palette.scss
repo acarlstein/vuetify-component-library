@@ -1,17 +1,17 @@
 :root {
-  --white:      #FFF;
-  --black:      #000;
-  --gray-darker:  lighten(var(--black), 13.6%);
-  --gray-dark:    lighten(var(--black), 20.1%);
-  --gray:         lighten(var(--black), 33.6%);
-  --gray-light:   lighten(var(--black), 46.8%);
-  --gray-lighter: lighten(var(--black), 93.6%);
+  --white:        #FFF;
+  --black:        #000;
+  --gray-darker:  #232323;
+  --gray-dark:    #333333;
+  --gray:         #565656;
+  --gray-light:   #777777;
+  --gray-lighter: #efefef;
   --success:      #4cb95d;
   --info:         #6bc1df;
   --warning:      #f09d4c;
   --danger:       #c9434e;
   --blue:         #539bcb;
-  --primary:      darken(--blue, 6.5%);
+  --primary:      #3b8cc2;
 }
 
 $white:           var(--white) !default;        /* @name: White; */

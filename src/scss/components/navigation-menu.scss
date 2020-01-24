@@ -5,16 +5,16 @@
 .v-application {
   @include v-background-and-border('white', $white);
   @include v-background-and-border('black', $black);
-  @include v-background-and-border(gray-darker, $gray-darker);
-  @include v-background-and-border(gray-dark, $gray-dark);
+  @include v-background-and-border('gray-darker', $gray-darker);
+  @include v-background-and-border('gray-dark', $gray-dark);
   @include v-background-and-border('gray', $gray);
-  @include v-background-and-border(gray-light, $gray-light);
-  @include v-background-and-border(gray-ligher, $gray-lighter);
+  @include v-background-and-border('gray-light', $gray-light);
+  @include v-background-and-border('gray-ligher', $gray-lighter);
 
-  @include v-background-and-border(success, $success);
-  @include v-background-and-border(info, $info);
-  @include v-background-and-border(warning, $warning);
-  @include v-background-and-border(danger, $danger);
-  @include v-background-and-border(primary, $primary);
-  @include v-background-and-border(muted, $muted);
+  @include v-background-and-border('success', $success);
+  @include v-background-and-border('info', $info);
+  @include v-background-and-border('warning', $warning);
+  @include v-background-and-border('danger', $danger);
+  @include v-background-and-border('primary', $primary);
+  @include v-background-and-border('muted', $muted);
 }
