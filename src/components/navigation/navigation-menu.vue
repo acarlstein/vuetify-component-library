@@ -34,7 +34,9 @@
                     @click.stop="action($event, item.click)"
                     :to="item.to">
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon v-if="item.icon.startsWith('mdi')">{{ item.icon }}</v-icon>
+            <i v-else-if="item.icon.startsWith('fa')" :class="`fas ${ item.icon }`">${item.iconStack}</i>
+            <font-awesome-icon v-else :icon="item.icon" />
           </v-list-item-icon>
 
           <v-list-item-content align="left">
@@ -112,9 +114,9 @@ function getDefaultData () {
     items: [
       { title: 'Home', icon: 'mdi-home', to: '/' },
       { title: 'About', icon: 'mdi-help-box', to: '/about' },
-      { title: 'Configuration', icon: 'mdi-settings', to: '/configuration' },
+      { title: 'Site Settings', icon: 'mdi-file-settings-variant', to: '/configuration' },
       {
-        title: 'Menu Configuration',
+        title: 'Menu Settings',
         icon: 'mdi-settings-transfer',
         click: 'show(menuConfigurationDialog)'
       }
