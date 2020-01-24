@@ -45,20 +45,20 @@
               :show="menuConfigurationDialog"
               @change="dialogSave($event)"
               @abort="dialogAbort($event)">
-      <v-row justify="space-around">
-          <v-col cols="12">
-            <v-select v-model="color" :items="colors" label="Color"></v-select>
+      <v-row>
+          <v-col cols="11">
+            <v-switch v-model="background" class="ma-2" label="Use Background Image"></v-switch>
+            <div>
+              <v-select v-if="!background" v-model="color" :items="colors" label="Background Color" class="ml-4 ma-2"></v-select>
+            </div>
+            <div>
+              <v-select v-if="background" v-model="image" :items="images" label="Background Image" class="ml-4 ma-2"></v-select>
+            </div>
+            <v-switch v-model="drawer" class="ma-2" label="v-model"></v-switch>
+            <v-switch v-model="miniVariant" class="ma-2" label="Mini variant"></v-switch>
+            <v-switch v-model="expandOnHover" class="ma-2" label="Expand on hover"></v-switch>
+            <v-switch v-model="right" class="ma-2" label="Right"></v-switch>
           </v-col>
-
-          <v-switch v-model="drawer" class="ma-2" label="v-model"></v-switch>
-
-          <v-switch v-model="miniVariant" class="ma-2" label="Mini variant"></v-switch>
-
-          <v-switch v-model="expandOnHover" class="ma-2" label="Expand on hover"></v-switch>
-
-          <v-switch v-model="background" class="ma-2" label="Background"></v-switch>
-
-          <v-switch v-model="right" class="ma-2" label="Right"></v-switch>
         </v-row>
     </dialogCmp>
 
@@ -67,6 +67,8 @@
 
 <script>
 import dialogCmp from '../dialog-cmp.vue'
+const backgroundImages = require.context('../../../public/images/menu-backgrounds', true, /^.*\.jpg$/).keys().map(s => s.slice(2))
+const backgroundColors = ['primary', 'blue', 'success', 'danger', 'teal']
 export default {
   name: 'navigation-menu',
   components: {
@@ -85,8 +87,10 @@ export default {
           click: 'show(menuConfigurationDialog)'
         }
       ],
-      color: 'primary',
-      colors: ['primary', 'blue', 'success', 'red', 'teal'],
+      color: backgroundColors[0],
+      colors: backgroundColors,
+      image: backgroundImages[0],
+      images: backgroundImages,
       right: true,
       miniVariant: false,
       expandOnHover: false,
@@ -98,7 +102,7 @@ export default {
   computed: {
     bg () {
       return this.background
-        ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg'
+        ? 'images/menu-backgrounds/' + this.image
         : undefined
     }
   },
@@ -107,22 +111,24 @@ export default {
       let str = perform.match(/show\(([^)]+)\)/)
       window.console.log('str: ' + str)
       if (str != null) {
-        /* this.$data['menuConfigurationDialog'] = !this.$data['menuConfigurationDialog'] */
-        /* this.$data['menuConfigurationDialog'] = true */
         this['menuConfigurationDialog'] = true
       }
-      window.console.log(this.$data['menuConfigurationDialog'])
     },
     dialogSave (event) {
-      window.console.log('DIALOG SAVED (CHANGED)')
-      window.console.log(event)
       this['menuConfigurationDialog'] = false
     },
     dialogAbort (event) {
-      window.console.log('DIALOG ABORTED')
-      window.console.log(event)
+      window.console.log('DIALOG ABORT CALLED')
       this['menuConfigurationDialog'] = false
     }
   }
 }
 </script>
+
+<style lang="scss">
+@import '../../scss/configuration/palette.scss';
+.v-label{
+  word-break: keep-all;
+  white-space: nowrap
+}
+</style>

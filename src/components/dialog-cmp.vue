@@ -1,7 +1,10 @@
 <template>
-  <v-dialog v-model="dialog">
+  <v-dialog v-model="dialog"
+            width="unset"
+            persistent
+            hide-overlay>
     <v-card>
-      <v-card-title class="headline">Use Google's location service? {{show}}</v-card-title>
+      <v-card-title class="headline">{{ title }}</v-card-title>
 
       <v-card-text>
         <slot></slot>
@@ -10,17 +13,11 @@
       <v-card-actions>
         <v-spacer></v-spacer>
 
-        <v-btn
-          color="green darken-1"
-          text
-          @click="save()">
+        <v-btn color="green darken-1" text @click="save()">
           <i class="fas fa-save"></i>
         </v-btn>
 
-        <v-btn
-          color="green darken-1"
-          text
-          @click="abort()">
+        <v-btn color="green darken-1" text @click="abort()">
           <i class="fas fa-times"></i>
         </v-btn>
       </v-card-actions>
@@ -31,7 +28,7 @@
 <script>
 export default {
   name: 'dialog-cmp',
-  props: ['show'],
+  props: ['show', 'title'],
   data () {
     return {
       dialog: this.show
