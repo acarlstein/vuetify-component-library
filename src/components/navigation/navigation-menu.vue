@@ -16,8 +16,8 @@
             <img src="images/my-avatar.jpg" />
           </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title>Vuetify UI Library {{menuConfigurationDialog}}</v-list-item-title>
+          <v-list-item-content align="left">
+            <v-list-item-title><strong>Vuetify UI Library</strong></v-list-item-title>
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
                 <v-list-item-subtitle v-on="on">{{userName}}</v-list-item-subtitle>
@@ -54,7 +54,7 @@
             <div>
               <v-select v-if="background" v-model="image" :items="images" label="Background Image" class="ml-4 ma-2"></v-select>
             </div>
-            <v-switch v-model="drawer" class="ma-2" label="v-model"></v-switch>
+            <v-switch v-model="drawer" class="ma-2" label="show (v-model)"></v-switch>
             <v-switch v-model="miniVariant" class="ma-2" label="Mini variant"></v-switch>
             <v-switch v-model="expandOnHover" class="ma-2" label="Expand on hover"></v-switch>
             <v-switch v-model="right" class="ma-2" label="Right"></v-switch>
@@ -66,38 +66,17 @@
 </template>
 
 <script>
+import paletteSource from '../../scss/components/configuration/palette.json'
 import dialogCmp from '../dialog-cmp.vue'
-const backgroundImages = require.context('../../../public/images/menu-backgrounds', true, /^.*\.jpg$/).keys().map(s => s.slice(2))
-const backgroundColors = ['primary', 'blue', 'success', 'danger', 'teal']
+const backgroundImages = require.context('../../../public/images/menu-backgrounds', true, /^.*\.(jpg|svg)$/).keys().map(s => s.slice(2))
+const backgroundColors = paletteSource.palette.map(color => color.variableName.slice(1))
 export default {
   name: 'navigation-menu',
   components: {
     dialogCmp
   },
   data () {
-    return {
-      drawer: true,
-      items: [
-        { title: 'Home', icon: 'mdi-home', click: '' },
-        { title: 'About', icon: 'mdi-help-box', click: '' },
-        { title: 'Configuration', icon: 'mdi-settings', click: '' },
-        {
-          title: 'Menu Configuration',
-          icon: 'mdi-settings-transfer',
-          click: 'show(menuConfigurationDialog)'
-        }
-      ],
-      color: backgroundColors[0],
-      colors: backgroundColors,
-      image: backgroundImages[0],
-      images: backgroundImages,
-      right: true,
-      miniVariant: false,
-      expandOnHover: false,
-      background: false,
-      userName: 'Alejandro G. Carlstein Ramos Mejia',
-      menuConfigurationDialog: false
-    }
+    return getDefaultData()
   },
   computed: {
     bg () {
@@ -109,7 +88,6 @@ export default {
   methods: {
     action (event, perform) {
       let str = perform.match(/show\(([^)]+)\)/)
-      window.console.log('str: ' + str)
       if (str != null) {
         this['menuConfigurationDialog'] = true
       }
@@ -118,15 +96,41 @@ export default {
       this['menuConfigurationDialog'] = false
     },
     dialogAbort (event) {
-      window.console.log('DIALOG ABORT CALLED')
       this['menuConfigurationDialog'] = false
+      Object.assign(this.$data, getDefaultData())
     }
+  }
+}
+
+function getDefaultData () {
+  return {
+    drawer: true,
+    items: [
+      { title: 'Home', icon: 'mdi-home', click: '' },
+      { title: 'About', icon: 'mdi-help-box', click: '' },
+      { title: 'Configuration', icon: 'mdi-settings', click: '' },
+      {
+        title: 'Menu Configuration',
+        icon: 'mdi-settings-transfer',
+        click: 'show(menuConfigurationDialog)'
+      }
+    ],
+    color: backgroundColors[11],
+    colors: backgroundColors,
+    image: backgroundImages[0],
+    images: backgroundImages,
+    right: false,
+    miniVariant: true,
+    expandOnHover: true,
+    background: false,
+    userName: 'Alejandro G. Carlstein Ramos Mejia',
+    menuConfigurationDialog: false
   }
 }
 </script>
 
 <style lang="scss">
-@import '../../scss/configuration/palette.scss';
+@import '../../scss/components/navigation-menu.scss';
 .v-label{
   word-break: keep-all;
   white-space: nowrap

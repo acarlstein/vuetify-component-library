@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/configuration/palette.scss';
+@import '../scss/components/configuration/palette.scss';
 .fa-save {
   color: $success;
 }
