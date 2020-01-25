@@ -9,6 +9,7 @@
       :src="bg"
       absolute
       dark
+      hide-overlay
     >
       <v-list dense nav class="py-0">
         <v-list-item two-line :class="miniVariant && 'px-0'" :to="userProfileTo">
