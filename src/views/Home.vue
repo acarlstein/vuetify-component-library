@@ -1,17 +1,17 @@
 <template>
-  <navigationLayout>
+  <fabNavigationLayout>
       <h1>Vuetify Component Library</h1>
       <h2>Coming soon...</h2>
-  </navigationLayout>
+  </fabNavigationLayout>
 </template>
 
 <script>
 // @ is an alias to /src
-import navigationLayout from '@/layouts/navigation-layout.vue'
+import fabNavigationLayout from '@/layouts/fab-navigation-layout.vue'
 export default {
   name: 'home-view',
   components: {
-    navigationLayout
+    fabNavigationLayout
   }
 }
 </script>
