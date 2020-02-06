@@ -9,7 +9,8 @@
       :src="bg"
       absolute
       dark
-      hide-overlay>
+      hide-overlay
+    >
       <v-list dense nav class="py-0">
         <v-list-item two-line :class="miniVariant && 'px-0'" :to="userProfileTo">
           <v-list-item-avatar>
@@ -75,6 +76,7 @@ import paletteSource from '../../scss/components/configuration/palette.json'
 import dialogCmp from '../dialog-cmp.vue'
 const backgroundImages = require.context('../../../public/images/menu-backgrounds', true, /^.*\.(jpg|svg)$/).keys().map(s => s.slice(2))
 const backgroundColors = paletteSource.palette.map(color => color.variableName.slice(1))
+window.console.log(backgroundColors)
 export default {
   name: 'navigation-menu',
   components: {
