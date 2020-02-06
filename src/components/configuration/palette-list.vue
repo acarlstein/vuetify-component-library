@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import paletteSource from '../../scss/configuration/palette.json'
+import paletteSource from '../../scss/components/configuration/palette.json'
 export default {
   name: 'palette-list',
   props: {
@@ -136,7 +136,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/configuration/palette.scss';
+@import '../../scss/components/configuration/palette.scss';
 
 .color-box {
   border: 4px solid black;

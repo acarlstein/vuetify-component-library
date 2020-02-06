@@ -1,0 +1,6 @@
+@mixin v-background-and-border ($selector, $color){
+  .#{$selector} {
+    background-color: $color !important;
+    border-color: $color !important;
+  } 
+}

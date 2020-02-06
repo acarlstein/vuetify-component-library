@@ -1,28 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import homeView from '../views/home.vue'
-import paletteView from '../views/configuration/palette-configuration.vue'
 
 Vue.use(VueRouter)
 
+// route level code-splitting
+// this generates a separate chunk (about.[hash].js) for this route
+// which is lazy-loaded when the route is visited.
+/* webpackChunkName: "about" */
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: homeView
+    component: () => import('../views/home.vue')
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/about.vue')
+    component: () => import('../views/about.vue')
   },
   {
-    path: '/configuration/palette-configuration',
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/profile.vue')
+  },
+  {
+    path: '/configuration',
+    name: 'configuration',
+    component: () => import('../views/configuration/configuration.vue')
+  },
+  {
+    path: '/configuration/palette',
     name: 'palette-configuration',
-    component: paletteView
+    component: () => import('../views/configuration/palette-configuration.vue')
   }
 ]
 

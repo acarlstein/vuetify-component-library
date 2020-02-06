@@ -15,6 +15,7 @@ Note: The format of the versioning is **based [Semantic Versioning 2.0.0](https:
 ## Stories
 Format: version number, story identifier, date (mm/dd/yyy), story title
 
+- [0.5.0] ``AC4`` [01/23/2020] Navigation Layout and Navigation Menu components
 - [0.4.1] ``AC3`` [01/23/2020] Refactoring sprint
 - [0.4.0] ``AC2`` [01/22/2020] Create Palette List using Mock Values
 - [0.3.0] ``AC1`` [01/15/2020] Create Site Pallete
