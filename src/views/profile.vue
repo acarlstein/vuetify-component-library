@@ -52,16 +52,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '../scss/components/configuration/palette.scss';
-.mdi-linkedin-box, .mdi-web {
-  color: $primary;
-}
-.mdi-map-marker {
-  color: $danger;
-}
-a {
-  text-decoration: none;
-}
-</style>
