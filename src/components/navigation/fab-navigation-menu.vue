@@ -107,53 +107,7 @@
                   <v-card-subtitle>
                     <strong>Transition</strong>
                   </v-card-subtitle>
-                  <v-select
-                    :items="transitions"
-                    v-model="transition"
-                    item-text="img"
-                    item-value="value"
-                    return-object
-                    single-line
-                    class="ma-2">
-                    <template slot="selection" slot-scope="data">
-                      <v-flex xs12>
-                        <v-img :src="data.item.img" width="200px" height="40px">
-                          <template v-slot:placeholder >
-                            <v-row
-                              class="fill-height ma-0"
-                              align="center"
-                              justify="center">
-                              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                            </v-row>
-                          </template>
-                          <v-row class="lightbox black--text fill-height">
-                            <v-col align="center">
-                              <div class="subheading"><strong>{{data.item.title}}</strong></div>
-                            </v-col>
-                          </v-row>
-                        </v-img>
-                      </v-flex>
-                    </template>
-                    <template slot="item" slot-scope="data">
-                      <v-flex xs12>
-                        <v-img :src="data.item.img" width="200px" height="40px">
-                          <template v-slot:placeholder>
-                            <v-row
-                              class="fill-height ma-0"
-                              align="center"
-                              justify="center">
-                              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                            </v-row>
-                          </template>
-                          <v-row class="lightbox black--text fill-height">
-                            <v-col align="center">
-                              <div class="subheading"><strong>{{data.item.title}}</strong></div>
-                            </v-col>
-                          </v-row>
-                        </v-img>
-                      </v-flex>
-                    </template>
-                  </v-select>
+                  <list-with-images :items="transitions" v-model="transition" />
                 </v-card>
               </v-col>
               <v-col cols="12" sm="6" md="4">
@@ -170,10 +124,12 @@
 
 <script>
 import dialogCmp from '../dialog-cmp.vue'
+import listWithImages from '../list-with-images.vue'
 export default {
   name: 'fab-navigation-menu',
   components: {
-    dialogCmp
+    dialogCmp,
+    listWithImages
   },
   data: () => ({
     direction: 'right',
