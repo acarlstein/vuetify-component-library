@@ -24,7 +24,12 @@
 <script>
 export default {
   name: 'list-icon-links',
-  props: ['items']
+  props: ['items'],
+  methods: {
+    openTab (url) {
+      window.open(url)
+    }
+  }
 }
 </script>
 
